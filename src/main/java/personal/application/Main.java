@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.net.URL;
+
 public class Main extends Application {
 
     private final ObservableList<Animal> animalsData = FXCollections.observableArrayList(
@@ -19,16 +22,17 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("MainWindow.fxml"));
+            URL url = new File("src/main/resources/personal.application/MainWindow.fxml").toURI().toURL();
+            Parent root = FXMLLoader.load(url);
             MainWindowController controller = loader.getController();
-//            controller.setData(animalsData);
-            Parent root = loader.load();
+            controller.setData(animalsData);
+
             Scene scene = new Scene(root);
             primaryStage.setTitle("Animals list");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception exception) {
-            System.out.println(exception.getMessage());
+            exception.printStackTrace();
         }
     }
 
