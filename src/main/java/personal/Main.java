@@ -1,4 +1,4 @@
-package personal.application;
+package personal;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -22,8 +22,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             FXMLLoader loader = new FXMLLoader();
-            URL url = new File("src/main/resources/personal.application/MainWindow.fxml").toURI().toURL();
-            Parent root = FXMLLoader.load(url);
+            loader.setLocation(Main.class.getResource("MainWindow.fxml"));
+            Parent root = loader.load();
             MainWindowController controller = loader.getController();
             controller.setData(animalsData);
 

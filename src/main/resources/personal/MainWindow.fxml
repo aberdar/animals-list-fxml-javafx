@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Text?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="personal.MainWindowController"
+      prefHeight="400.0" prefWidth="600.0" spacing="10">
+    <padding>
+        <Insets left="10" right="10"/>
+    </padding>
+    <children>
+        <MenuBar fx:id="menuBar">
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Save" onAction="#saveAction"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit" onAction="#exitAction"/>
+                    </items>
+                </Menu>
+                <Menu text="Edit">
+                    <items>
+                        <MenuItem text="Add" onAction="#addAction"/>
+                        <MenuItem text="Delete" onAction="#deleteAction"/>
+                    </items>
+                </Menu>
+                <Menu text="Help">
+                    <items>
+                        <MenuItem text="About" onAction="#aboutAction"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Text text="Animals List" textAlignment="CENTER" fx:id="tableTitle"/>
+        <TableView fx:id="table">
+            <columns>
+                <TableColumn text="View" prefWidth="100" fx:id="viewColumn"/>
+                <TableColumn text="Nickname" prefWidth="100" fx:id="nicknameColumn"/>
+                <TableColumn text="Years" prefWidth="100" fx:id="yearsColumn"/>
+                <TableColumn text="Months" prefWidth="100" fx:id="monthsColumn"/>
+                <TableColumn text="Hostname" prefWidth="100" fx:id="hostnameColumn"/>
+            </columns>
+        </TableView>
+    </children>
+</VBox>

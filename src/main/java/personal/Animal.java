@@ -1,4 +1,4 @@
-package personal.application;
+package personal;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
