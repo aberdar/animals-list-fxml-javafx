@@ -1,4 +1,4 @@
-package personal.application;
+package personal;
 
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
