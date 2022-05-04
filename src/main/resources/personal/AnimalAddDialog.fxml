@@ -6,9 +6,44 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="personal.AnimalAddDialogController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="personal.AnimalAddDialogController"
+      prefHeight="400.0" prefWidth="600.0" spacing="10" alignment="CENTER">
+    <padding>
+        <Insets right="10" left="10"/>
+    </padding>
+    <children>
+        <HBox spacing="10">
+            <children>
+                <Label text="View" prefHeight="40" prefWidth="100"/>
+                <TextField fx:id="addView" prefHeight="40" prefWidth="200"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Label text="Nickname" prefHeight="40" prefWidth="100"/>
+                <TextField fx:id="addNickname" prefHeight="40" prefWidth="200"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Label text="Hostname" prefHeight="40" prefWidth="100"/>
+                <TextField fx:id="addHostname" prefHeight="40" prefWidth="200"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Label text="Years" prefHeight="40" prefWidth="100"/>
+                <TextField fx:id="addYears" prefHeight="40" prefWidth="200"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Label text="Months" prefHeight="40" prefWidth="100"/>
+                <TextField fx:id="addMonths" prefHeight="40" prefWidth="200"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>
