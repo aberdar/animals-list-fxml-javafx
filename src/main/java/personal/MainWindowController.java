@@ -67,10 +67,9 @@ public class MainWindowController implements Initializable {
     private void addAction() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            AnimalAddDialogController controller = loader.getController();
-
             loader.setLocation(Main.class.getResource("AnimalAddDialog.fxml"));
             Parent root = loader.load();
+            AnimalAddDialogController controller = loader.getController();
 
             Stage stage = new Stage();
             Scene scene = new Scene(root);
@@ -81,10 +80,9 @@ public class MainWindowController implements Initializable {
             controller.setAnimal(animal);
             stage.showAndWait();
 
-            if (controller.getResult() == ButtonType.OK) {
+            if (controller.getButtonType() == ButtonType.OK) {
                 table.getItems().add(animal);
             }
-
         } catch (IOException exception) {
             exception.printStackTrace();
         }
