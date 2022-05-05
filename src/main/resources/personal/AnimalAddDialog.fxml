@@ -45,5 +45,11 @@
                 <TextField fx:id="addMonths" prefHeight="40" prefWidth="200"/>
             </children>
         </HBox>
+        <HBox spacing="10">
+            <children>
+                <Button fx:id="submit" onAction="#handleOk" prefWidth="100" text="Add"/>
+                <Button fx:id="cancel" onAction="#handleCancel" prefWidth="100" text="Cancel"/>
+            </children>
+        </HBox>
     </children>
 </VBox>
