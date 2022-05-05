@@ -43,12 +43,28 @@ public class AnimalAddDialogController implements Initializable {
     }
 
     private boolean isInputValid() {
-        if (addNickname.getText() == null || addNickname.getText().length() == 0) {
+        if (addNickname.getText() == null ||
+            addNickname.getText().length() == 0 ||
+            !Character.isUpperCase(addNickname.getText().charAt(0)) ||
+            !addNickname.getText().matches("[a-zA-Z]+")
+        ) {
             error += "No valid nickname.\n";
         }
 
-        if (addHostname.getText() == null || addHostname.getText().length() == 0) {
+        if (addHostname.getText() == null ||
+            addHostname.getText().length() == 0 ||
+            !Character.isUpperCase(addHostname.getText().charAt(0)) ||
+            !addHostname.getText().matches("[a-zA-Z]+")
+        ) {
             error += "No valid hostname.\n";
+        }
+
+        if (addYears.getValue() == 0) {
+            error += "No valid year.\n";
+        }
+
+        if (addMonths.getValue() == 0) {
+            error += "No valid month.\n";
         }
 
         return error.length() == 0;
@@ -85,5 +101,6 @@ public class AnimalAddDialogController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addView.getItems().addAll(animals);
+        addView.setValue(animals[0]);
     }
 }
