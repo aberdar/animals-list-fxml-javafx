@@ -1,14 +1,19 @@
 package personal;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AnimalAddDialogController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class AnimalAddDialogController implements Initializable {
     @FXML
-    public TextField addView;
+    public ChoiceBox<String> addView;
     @FXML
     public TextField addNickname;
     @FXML
@@ -22,6 +27,7 @@ public class AnimalAddDialogController {
     private Animal animal;
     private ButtonType buttonType = ButtonType.CANCEL;
     private String error = "";
+    private final String[] animals = {"Dog", "Cat", "Turtle", "Rabbit", "Parrot", "Snake", "Mink"};
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -36,10 +42,6 @@ public class AnimalAddDialogController {
     }
 
     private boolean isInputValid() {
-        if (addView.getText() == null || addView.getText().length() == 0) {
-            error += "No valid view.\n";
-        }
-
         if (addNickname.getText() == null || addNickname.getText().length() == 0) {
             error += "No valid nickname.\n";
         }
@@ -74,7 +76,7 @@ public class AnimalAddDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            animal.setView(addView.getText());
+            animal.setView(addView.getSelectionModel().getSelectedItem());
             animal.setNickname(addNickname.getText());
             animal.setHostname(addHostname.getText());
             animal.setYears(Integer.parseInt(addYears.getText()));
@@ -97,5 +99,10 @@ public class AnimalAddDialogController {
     private void handleCancel() {
         buttonType = ButtonType.CANCEL;
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        addView.getItems().addAll(animals);
     }
 }
