@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,9 +20,9 @@ public class AnimalAddDialogController implements Initializable {
     @FXML
     public TextField addHostname;
     @FXML
-    public TextField addYears;
+    public Spinner<Integer> addYears;
     @FXML
-    public TextField addMonths;
+    public Spinner<Integer> addMonths;
 
     private Stage stage;
     private Animal animal;
@@ -50,26 +51,6 @@ public class AnimalAddDialogController implements Initializable {
             error += "No valid hostname.\n";
         }
 
-        if (addYears.getText() == null || addYears.getText().length() == 0) {
-            error += "No valid year.\n";
-        } else {
-            try {
-                Integer.parseInt(addYears.getText());
-            } catch (NumberFormatException numberFormatException) {
-                error += "No valid year.\n";
-            }
-        }
-
-        if (addMonths.getText() == null || addMonths.getText().length() == 0) {
-            error += "No valid month.\n";
-        } else {
-            try {
-                Integer.parseInt(addMonths.getText());
-            } catch (NumberFormatException numberFormatException) {
-                error += "No valid month.\n";
-            }
-        }
-
         return error.length() == 0;
     }
 
@@ -79,8 +60,8 @@ public class AnimalAddDialogController implements Initializable {
             animal.setView(addView.getSelectionModel().getSelectedItem());
             animal.setNickname(addNickname.getText());
             animal.setHostname(addHostname.getText());
-            animal.setYears(Integer.parseInt(addYears.getText()));
-            animal.setMonths(Integer.parseInt(addMonths.getText()));
+            animal.setYears(addYears.getValue());
+            animal.setMonths(addMonths.getValue());
 
             buttonType = ButtonType.OK;
             stage.close();
