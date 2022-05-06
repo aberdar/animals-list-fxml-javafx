@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="personal.AnimalEditDialogController"
@@ -12,25 +13,25 @@
         <Insets right="10" left="10"/>
     </padding>
     <children>
-        <HBox spacing="10">
+        <HBox spacing="10" styleClass="editclass">
             <children>
                 <Label text="View" prefHeight="40" prefWidth="100"/>
                 <ChoiceBox fx:id="editView" prefHeight="40" prefWidth="200"/>
             </children>
         </HBox>
-        <HBox spacing="10">
+        <HBox spacing="10" styleClass="editclass">
             <children>
                 <Label text="Nickname" prefHeight="40" prefWidth="100"/>
                 <TextField fx:id="editNickname" prefHeight="40" prefWidth="200"/>
             </children>
         </HBox>
-        <HBox spacing="10">
+        <HBox spacing="10" styleClass="editclass">
             <children>
                 <Label text="Hostname" prefHeight="40" prefWidth="100"/>
                 <TextField fx:id="editHostname" prefHeight="40" prefWidth="200"/>
             </children>
         </HBox>
-        <HBox spacing="10">
+        <HBox spacing="10" styleClass="editclass">
             <children>
                 <Label text="Years" prefHeight="40" prefWidth="100"/>
                 <Spinner fx:id="editYears" prefHeight="40" prefWidth="200" editable="true">
@@ -40,7 +41,7 @@
                 </Spinner>
             </children>
         </HBox>
-        <HBox spacing="10">
+        <HBox spacing="10" styleClass="editclass">
             <children>
                 <Label text="Months" prefHeight="40" prefWidth="100"/>
                 <Spinner fx:id="editMonths" prefHeight="40" prefWidth="200">
@@ -57,4 +58,7 @@
             </children>
         </HBox>
     </children>
+    <stylesheets>
+        <URL value="@dialogstyle.css"/>
+    </stylesheets>
 </VBox>
