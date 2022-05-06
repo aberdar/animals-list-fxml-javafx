@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="personal.AnimalEditDialogController"
+      prefHeight="500.0" prefWidth="330.0" spacing="10" alignment="CENTER">
+    <padding>
+        <Insets right="10" left="10"/>
+    </padding>
+    <children>
+        <HBox spacing="10">
+            <children>
+                <Label text="View" prefHeight="40" prefWidth="100"/>
+                <ChoiceBox fx:id="editView" prefHeight="40" prefWidth="200"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Label text="Nickname" prefHeight="40" prefWidth="100"/>
+                <TextField fx:id="editNickname" prefHeight="40" prefWidth="200"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Label text="Hostname" prefHeight="40" prefWidth="100"/>
+                <TextField fx:id="editHostname" prefHeight="40" prefWidth="200"/>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Label text="Years" prefHeight="40" prefWidth="100"/>
+                <Spinner fx:id="editYears" prefHeight="40" prefWidth="200" editable="true">
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="50" initialValue="0"/>
+                    </valueFactory>
+                </Spinner>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Label text="Months" prefHeight="40" prefWidth="100"/>
+                <Spinner fx:id="editMonths" prefHeight="40" prefWidth="200">
+                    <valueFactory>
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="11" initialValue="0"/>
+                    </valueFactory>
+                </Spinner>
+            </children>
+        </HBox>
+        <HBox spacing="10">
+            <children>
+                <Button fx:id="submit" onAction="#handleOk" prefWidth="100" text="Edit"/>
+                <Button fx:id="cancel" onAction="#handleCancel" prefWidth="100" text="Cancel"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>

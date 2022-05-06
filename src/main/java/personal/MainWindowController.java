@@ -2,6 +2,7 @@ package personal;
 
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -89,16 +90,41 @@ public class MainWindowController implements Initializable {
     }
 
     @FXML
+    public void editAction() {
+        try {
+            Animal animal = table.getSelectionModel().getSelectedItem();
+            if (animal != null) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(Main.class.getResource("AnimalEditDialog.fxml"));
+                Parent root = loader.load();
+                AnimalEditDialogController controller = loader.getController();
+
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                stage.setTitle("Edit animal");
+                stage.setScene(scene);
+                controller.setAnimal(animal);
+                controller.setStage(stage);
+                stage.showAndWait();
+
+                if (controller.getButtonType() == ButtonType.OK) {
+                    table.refresh();
+                }
+            } else {
+                showSelectedError("No edit items.");
+            }
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    @FXML
     private void deleteAction() {
         int selectedIndex = table.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             table.getItems().remove(selectedIndex);
         } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Please select item");
-            alert.setContentText("No deleted item.");
-            alert.showAndWait();
+            showSelectedError("No deleted item.");
         }
     }
 
@@ -122,5 +148,13 @@ public class MainWindowController implements Initializable {
 
     public void setData(ObservableList<Animal> animalsData) {
         table.setItems(animalsData);
+    }
+
+    private void showSelectedError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Please select item");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

@@ -25,6 +25,7 @@
                 <Menu text="Edit">
                     <items>
                         <MenuItem text="Add" onAction="#addAction"/>
+                        <MenuItem text="Edit" onAction="#editAction"/>
                         <MenuItem text="Delete" onAction="#deleteAction"/>
                     </items>
                 </Menu>
