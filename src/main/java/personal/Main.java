@@ -25,6 +25,7 @@ public class Main extends Application {
             controller.setData(animalsData);
 
             Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("mainstyle.css").toExternalForm());
             primaryStage.setTitle("Animals list");
             primaryStage.setScene(scene);
             primaryStage.show();

@@ -1,0 +1,46 @@
+.root {
+    -fx-background-color: #111111;
+    -fx-font-family: Verdana;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(169, 0, 0, 0.56);
+}
+
+.table-cell {
+    -fx-font-family: Verdana;
+    -fx-text-fill: white;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #313131;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, rgb(40, 40, 40);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(169, 0, 0, 0.56);
+}
+
+.menu-bar {
+    -fx-background-color: rgba(169, 0, 0, 0.56);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.menu-bar .menu-button:hover, .menu-bar .menu-button:focused,
+.menu-bar .menu-button:showing, .menu-item:hover, .menu-item:showing, .menu-item:focused {
+    -fx-background: rgba(169, 0, 0, 0.56);
+    -fx-text-fill: white;
+}
+
+#tableTitle {
+    -fx-font: bold 28pt "Georgia";
+    -fx-fill: red;
+}
