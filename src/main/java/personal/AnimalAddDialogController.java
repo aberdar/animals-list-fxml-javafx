@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -87,6 +88,8 @@ public class AnimalAddDialogController implements Initializable {
             alert.setTitle("Error");
             alert.setHeaderText("Please correct invalid fields");
             alert.setContentText(error);
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add(getClass().getResource("alertstyle.css").toExternalForm());
             alert.showAndWait();
             error = "";
         }
