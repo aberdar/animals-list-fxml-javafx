@@ -1,6 +1,7 @@
 package personal;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +17,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.zip.DataFormatException;
 
 public class MainWindowController implements Initializable {
 
@@ -36,6 +40,44 @@ public class MainWindowController implements Initializable {
     private TableColumn<Animal, Integer> monthsColumn;
     @FXML
     private TableColumn<Animal, String> hostnameColumn;
+
+    @FXML
+    public void openAction() {
+        try {
+            ObservableList<Animal> animalsData = FXCollections.observableArrayList();
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open file");
+            File file = fileChooser.showOpenDialog(null);
+            if (file == null) return;
+
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+            String str;
+            while ((str = bufferedReader.readLine()) != null) {
+                try {
+                    String[] data = str.split(" +");
+                    if(str.isEmpty()) break;
+                    if (data.length != 5) throw new DataFormatException("Insufficient data.");
+
+                    String view = data[0];
+                    String nickname = data[1];
+                    int year = Integer.parseInt(data[2]);
+                    int mouth = Integer.parseInt(data[3]);
+                    String hostname = data[4];
+
+                    Animal animal = new Animal(view, nickname, year, mouth, hostname);
+                    animalsData.add(animal);
+                } catch (DataFormatException exception){
+                    exception.printStackTrace();
+                    bufferedReader.close();
+                }
+            }
+            bufferedReader.close();
+
+            table.setItems(animalsData);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 
     @FXML
     private void saveAction() {
